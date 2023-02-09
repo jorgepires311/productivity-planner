@@ -1,15 +1,19 @@
+import React, { useState, useEffect } from "react";
 const Quotes = () => {
-const quoteApi = 'https://zenquotes.io/api/quotes/'
-async function getQuote(url){
-    const res = await fetch(url)
-    var quoteData =  await response.json()
-    return quoteData
-}
-
-return (
+  const url = "https://zenquotes.io/api/quotes/";
+  const dailyQuote = async () => {
+    const res = await fetch(url);
+    const quoteData = await res.json();
+    return quoteData;
+  };
+  useEffect(() => {
+    dailyQuote();
+  }, []);
+  return (
     <div className="quoteContainer">
-        getQuote(quoteApi)
+      <h2>Inspiration</h2>
+      {dailyQuote.h}
     </div>
-)
-}
-export default Quotes
+  );
+};
+export default Quotes;
